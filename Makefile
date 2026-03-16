@@ -12,18 +12,18 @@ preview: build
 	npx serve _site -l 4322
 
 deploy: build
-	git stash --include-untracked
+	@rm -rf /tmp/gh-pages-deploy
+	@cp -r _site /tmp/gh-pages-deploy
+	@touch /tmp/gh-pages-deploy/.nojekyll
 	git checkout gh-pages
-	git ls-files | xargs git rm -f
-	git checkout main -- .gitignore
-	git stash pop
-	cp -r _site/* .
-	touch .nojekyll
-	git add .
-	git commit -m "Deploy"
+	@git rm -rf . -q 2>/dev/null || true
+	@cp -r /tmp/gh-pages-deploy/* .
+	@cp /tmp/gh-pages-deploy/.nojekyll .
+	git add -A
+	git commit -m "Deploy" --allow-empty
 	git push origin gh-pages
 	git checkout main
-	npm install
+	@rm -rf /tmp/gh-pages-deploy
 
 clean:
 	rm -rf _site
