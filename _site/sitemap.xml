@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.w3.org/2000/svg">
+  <url>
+    <loc>https://vallabh.me/aiharness/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/conversational/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/search-answer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/code-developer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/rag-knowledge/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/agent-automation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/safety-guardrail/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/evaluation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/content-generation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/data-analytics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/voice-multimodal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/image-video/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/embedding-vector/</loc>
+  </url>
+  
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/fine-tuning/</loc>
+  </url>
+  
+</urlset>
