@@ -257,6 +257,46 @@ button:focus-visible {
   font-style: italic;
 }
 
+/* ---- Pattern index ---- */
+.pattern-index {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pattern-index-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-contrast);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.pattern-index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.pattern-index-list li a {
+  display: inline-block;
+  font-size: var(--font-small);
+  color: var(--color-foreground);
+  background: var(--color-background-200);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-1);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pattern-index-list li a:hover {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+}
+
 /* ---- Section title (divider with text) ---- */
 .section-title {
   display: flex;

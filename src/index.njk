@@ -19,31 +19,28 @@ description: "AI Harness: The model is commodity. The harness is the differentia
   </div>
 </div>
 
-{% set groups = [
-  { "name": "Foundation", "description": "Infrastructure, constraints, and building blocks", "ids": ["safety-guardrail", "evaluation", "embedding-vector", "fine-tuning"] },
-  { "name": "Experience", "description": "User facing interaction patterns", "ids": ["conversational", "content-generation", "data-analytics", "voice-multimodal", "image-video"] },
-  { "name": "Intelligence", "description": "Deep capability augmentation and autonomy", "ids": ["search-answer", "code-developer", "rag-knowledge", "agent-automation"] }
-] %}
+<nav class="pattern-index">
+  <h2 class="pattern-index-title">Architecture Categories</h2>
+  <ul class="pattern-index-list">
+    {% for cat in harness.categories %}
+    <li><a href="#{{ cat.id }}">{{ cat.name }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
 
-{% for group in groups %}
 <div class="section">
-  <div class="section-title">{{ group.name }}</div>
-  <p class="group-description">{{ group.description }}</p>
   <ul class="section-list">
     {% for cat in harness.categories %}
-      {% if cat.id in group.ids %}
-      <li class="card">
-        <a href="{{ ('/pattern/' + cat.id + '/') | url }}" class="card-link" aria-label="{{ cat.name }}"></a>
-        <div class="card-content">
-          <div class="card-header">
-            <h2 class="card-title">{{ cat.name }}</h2>
-            <span class="card-depth">{{ cat.depth }}</span>
-          </div>
-          <p class="card-excerpt">{{ cat.tagline }}</p>
+    <li class="card" id="{{ cat.id }}">
+      <a href="{{ ('/pattern/' + cat.id + '/') | url }}" class="card-link" aria-label="{{ cat.name }}"></a>
+      <div class="card-content">
+        <div class="card-header">
+          <h2 class="card-title">{{ cat.name }}</h2>
+          <span class="card-depth">{{ cat.depth }}</span>
         </div>
-      </li>
-      {% endif %}
+        <p class="card-excerpt">{{ cat.tagline }}</p>
+      </div>
+    </li>
     {% endfor %}
   </ul>
 </div>
-{% endfor %}
