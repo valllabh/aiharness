@@ -11,7 +11,21 @@ build:
 preview: build
 	npx serve _site -l 4322
 
+deploy: build
+	git stash --include-untracked
+	git checkout gh-pages
+	git ls-files | xargs git rm -f
+	git checkout main -- .gitignore
+	git stash pop
+	cp -r _site/* .
+	touch .nojekyll
+	git add .
+	git commit -m "Deploy"
+	git push origin gh-pages
+	git checkout main
+	npm install
+
 clean:
 	rm -rf _site
 
-.PHONY: install dev build preview clean
+.PHONY: install dev build preview deploy clean

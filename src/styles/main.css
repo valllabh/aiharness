@@ -262,6 +262,8 @@ button:focus-visible {
   max-width: var(--container-width);
   margin: 0 auto;
   width: 100%;
+  padding-bottom: var(--spacing-7);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .pattern-index-title {
@@ -269,7 +271,14 @@ button:focus-visible {
   font-size: 1.25rem;
   font-weight: 400;
   color: var(--color-contrast);
-  margin: 0 0 var(--spacing-4) 0;
+  margin: 0 0 var(--spacing-3) 0;
+}
+
+.pattern-index-subtitle {
+  font-size: var(--font-small);
+  color: var(--color-mute);
+  margin: 0 0 var(--spacing-5) 0;
+  line-height: 1.5;
 }
 
 .pattern-index-list {
