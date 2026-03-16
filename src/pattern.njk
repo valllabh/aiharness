@@ -38,6 +38,14 @@ layout: base.njk
 </div>
 
 <div class="pattern-section">
+  <h2 class="pattern-section-title">Architecture</h2>
+  <div class="diagram-container">
+    <img src="{{ ('/assets/diagrams/' + pattern.id + '.png') | url }}" alt="{{ pattern.name }} architecture diagram" class="diagram-img" loading="lazy" />
+    <img src="{{ '/assets/diagrams/legend.png' | url }}" alt="Legend" class="diagram-legend" loading="lazy" />
+  </div>
+</div>
+
+<div class="pattern-section">
   <h2 class="pattern-section-title">Components</h2>
   <ul class="components-list">
     {% for comp in pattern.components %}
