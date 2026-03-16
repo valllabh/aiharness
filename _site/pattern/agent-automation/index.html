@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    
+    
+
+    <title>Agent and Automation - AI Harness</title>
+    <meta name="description" content="Adds tools, planning, state management, and multi step loops for autonomous task execution" />
+    <link rel="canonical" href="https://vallabh.me/aiharness/pattern/agent-automation/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Agent and Automation - AI Harness" />
+    <meta property="og:description" content="Adds tools, planning, state management, and multi step loops for autonomous task execution" />
+    <meta property="og:url" content="https://vallabh.me/aiharness/pattern/agent-automation/" />
+    <meta property="og:site_name" content="AI Harness" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Agent and Automation - AI Harness" />
+    <meta name="twitter:description" content="Adds tools, planning, state management, and multi step loops for autonomous task execution" />
+
+    <link rel="icon" type="image/svg+xml" href="/aiharness/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Noto+Serif:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="/aiharness/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TEDJBT1YX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2TEDJBT1YX');
+    </script>
+    <script>
+      (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/aiharness/" class="site-logo">AI Harness</a>
+        <div style="display:flex;align-items:center;gap:var(--spacing-3);">
+        <a href="https://vallabh.me/aisense/" class="theme-toggle" aria-label="AI Sense" style="text-decoration:none;font-size:var(--font-x-small);font-weight:500;">AI Sense</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <span id="theme-icon-light" style="display:none;"><i class="fa-solid fa-sun"></i></span>
+          <span id="theme-icon-dark"><i class="fa-solid fa-moon"></i></span>
+        </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content" id="main">
+      <article class="container">
+        
+<a href="/aiharness/" class="back-link"><i class="fa-solid fa-arrow-left"></i> All Patterns</a>
+
+<div class="post-header">
+  <div class="post-meta">
+    <span class="post-meta-item">Depth: <strong>Very Deep</strong></span>
+    <span class="post-meta-item">Model role: <strong>Autonomous reasoning and acting engine</strong></span>
+  </div>
+  <h1 class="post-title">Agent and Automation</h1>
+  <p class="post-tagline">Adds tools, planning, state management, and multi step loops for autonomous task execution</p>
+</div>
+
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Real World Analogy</h2>
+  <div class="analogy-card">Like hiring a general contractor instead of asking for renovation advice. The contractor does not just tell you what to do. They make a plan, hire subcontractors, buy materials, check results, adjust when things go wrong, and keep going until the job is done.</div>
+</div>
+
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">How It Works</h2>
+  <div class="pattern-section-body">
+    
+      <p>Agent harnesses give AI the ability to take actions in the real world, not just generate text. The AI can use tools, make plans, execute multi step workflows, and adjust its approach based on results. Think of it as the difference between asking someone for directions versus hiring someone to drive you there.</p>
+    
+      <p>The wrapping around the AI is the deepest of any harness type. It includes planning engines that break big tasks into steps, tool calling systems that let the AI interact with software and websites, state management that tracks progress across long running tasks, and safety guardrails that prevent the AI from taking harmful actions.</p>
+    
+      <p>The same AI model can perform dramatically differently depending on its harness. In benchmarks, one model scored 78% with one harness and only 42% with another, a 36 point gap from the wrapping alone.</p>
+    
+  </div>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Components</h2>
+  <ul class="components-list">
+    
+      <li>Tool calling with structured schemas for interacting with external systems</li>
+    
+      <li>Planning loops that break tasks into steps and adapt based on results</li>
+    
+      <li>State persistence and checkpointing for long running tasks</li>
+    
+      <li>Multi agent coordination with handoffs between specialized agents</li>
+    
+      <li>Human in the loop approval workflows for sensitive actions</li>
+    
+      <li>Observability and tracing for monitoring agent behavior</li>
+    
+  </ul>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Real World Examples</h2>
+  <div class="examples-grid">
+    
+    <div class="example-card">
+      <p class="example-name">Claude Agent SDK</p>
+      <p class="example-desc">Gives AI a body with computer, terminal, and filesystem access</p>
+    </div>
+    
+    <div class="example-card">
+      <p class="example-name">LangGraph</p>
+      <p class="example-desc">Graph based state machine for building agents with conditional branching, 47M+ downloads</p>
+    </div>
+    
+    <div class="example-card">
+      <p class="example-name">Zapier Agents</p>
+      <p class="example-desc">AI agents with access to 7,000+ app integrations that make decisions</p>
+    </div>
+    
+    <div class="example-card">
+      <p class="example-name">Anthropic Computer Use</p>
+      <p class="example-desc">AI that controls a desktop computer through screenshots, clicks, and typing</p>
+    </div>
+    
+  </div>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Key Terms</h2>
+  <div class="terms-grid">
+    
+    <div class="term-card">
+      <p class="term-word">Tool calling</p>
+      <p class="term-def">The ability for AI to invoke external functions like searching the web, running code, or sending messages.</p>
+    </div>
+    
+    <div class="term-card">
+      <p class="term-word">Agent loop</p>
+      <p class="term-def">The cycle where AI thinks, acts, observes results, and decides the next step, repeating until done.</p>
+    </div>
+    
+    <div class="term-card">
+      <p class="term-word">Human in the loop</p>
+      <p class="term-def">A design pattern where AI pauses at critical decision points and asks a human for approval.</p>
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Related Patterns</h2>
+  <ul class="related-list">
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="/aiharness/pattern/code-developer/">Code and Developer</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="/aiharness/pattern/safety-guardrail/">Safety and Guardrail</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+          <li><a href="/aiharness/pattern/conversational/">Conversational</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<nav class="post-nav">
+  
+    <a href="/aiharness/pattern/rag-knowledge/"><i class="fa-solid fa-arrow-left"></i> RAG and Knowledge</a>
+  
+  
+    <a href="/aiharness/pattern/safety-guardrail/" style="text-align:right;margin-left:auto;">Safety and Guardrail <i class="fa-solid fa-arrow-right"></i></a>
+  
+</nav>
+
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-copy">AI Harness v1.0 &middot; March 2026</span>
+    </footer>
+
+    <script>
+      (function() {
+        var btn = document.getElementById('theme-toggle');
+        var lightIcon = document.getElementById('theme-icon-light');
+        var darkIcon = document.getElementById('theme-icon-dark');
+
+        function update() {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          lightIcon.style.display = isDark ? 'inline' : 'none';
+          darkIcon.style.display = isDark ? 'none' : 'inline';
+        }
+
+        btn.addEventListener('click', function() {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+          }
+          update();
+        });
+
+        update();
+      })();
+    </script>
+  </body>
+</html>

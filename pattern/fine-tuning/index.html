@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    
+    
+
+    <title>Fine Tuning - AI Harness</title>
+    <meta name="description" content="Orchestrates training loops and data to modify the AI model itself" />
+    <link rel="canonical" href="https://vallabh.me/aiharness/pattern/fine-tuning/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Fine Tuning - AI Harness" />
+    <meta property="og:description" content="Orchestrates training loops and data to modify the AI model itself" />
+    <meta property="og:url" content="https://vallabh.me/aiharness/pattern/fine-tuning/" />
+    <meta property="og:site_name" content="AI Harness" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Fine Tuning - AI Harness" />
+    <meta name="twitter:description" content="Orchestrates training loops and data to modify the AI model itself" />
+
+    <link rel="icon" type="image/svg+xml" href="/aiharness/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Noto+Serif:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="/aiharness/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TEDJBT1YX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2TEDJBT1YX');
+    </script>
+    <script>
+      (function() {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/aiharness/" class="site-logo">AI Harness</a>
+        <div style="display:flex;align-items:center;gap:var(--spacing-3);">
+        <a href="https://vallabh.me/aisense/" class="theme-toggle" aria-label="AI Sense" style="text-decoration:none;font-size:var(--font-x-small);font-weight:500;">AI Sense</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <span id="theme-icon-light" style="display:none;"><i class="fa-solid fa-sun"></i></span>
+          <span id="theme-icon-dark"><i class="fa-solid fa-moon"></i></span>
+        </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content" id="main">
+      <article class="container">
+        
+<a href="/aiharness/" class="back-link"><i class="fa-solid fa-arrow-left"></i> All Patterns</a>
+
+<div class="post-header">
+  <div class="post-meta">
+    <span class="post-meta-item">Depth: <strong>Build time</strong></span>
+    <span class="post-meta-item">Model role: <strong>Model being modified</strong></span>
+  </div>
+  <h1 class="post-title">Fine Tuning</h1>
+  <p class="post-tagline">Orchestrates training loops and data to modify the AI model itself</p>
+</div>
+
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Real World Analogy</h2>
+  <div class="analogy-card">Like a sports training camp. The athlete (model) arrives with general ability. The coaching staff (harness) designs drills from game film (training data), adjusts intensity (hyperparameters), tracks progress (evaluation), and produces a specialist. The athlete leaves fundamentally changed, not just better equipped.</div>
+</div>
+
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">How It Works</h2>
+  <div class="pattern-section-body">
+    
+      <p>Fine tuning harnesses are unique because they are the only category that changes the AI model itself. Every other harness wraps the model at runtime without altering it. Fine tuning takes a pretrained AI model and further trains it on specialized data, producing a new version that is better at specific tasks.</p>
+    
+      <p>The harness manages the entire training process: formatting data, configuring parameters, optimizing memory usage, coordinating across multiple GPUs, saving progress, and evaluating quality throughout. Modern techniques like LoRA make this dramatically more accessible by only training a tiny fraction of the model&#39;s parameters.</p>
+    
+      <p>Memory optimization is the key innovation that democratized fine tuning. A 70 billion parameter model normally requires over 140 GB of GPU memory. QLoRA reduces this to about 48 GB, fitting on a single high end GPU. Tools like Unsloth push further with 2 to 5x speed improvements.</p>
+    
+  </div>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Components</h2>
+  <ul class="components-list">
+    
+      <li>Training data formatting and quality validation</li>
+    
+      <li>Training loop orchestration with LoRA, QLoRA, and full fine tuning</li>
+    
+      <li>Memory optimization for fitting large models on available hardware</li>
+    
+      <li>Hyperparameter management for learning rate, rank, and scheduling</li>
+    
+      <li>Multi GPU and multi node coordination for large scale training</li>
+    
+      <li>Checkpointing, evaluation, and model export for deployment</li>
+    
+  </ul>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Real World Examples</h2>
+  <div class="examples-grid">
+    
+    <div class="example-card">
+      <p class="example-name">Axolotl</p>
+      <p class="example-desc">Leading open source framework with YAML driven configuration and rapid model support</p>
+    </div>
+    
+    <div class="example-card">
+      <p class="example-name">Unsloth</p>
+      <p class="example-desc">Achieves 2 to 5x faster training with 80% less memory on consumer GPUs</p>
+    </div>
+    
+    <div class="example-card">
+      <p class="example-name">OpenAI Fine Tuning API</p>
+      <p class="example-desc">Managed service with reinforcement fine tuning and no GPU infrastructure to manage</p>
+    </div>
+    
+    <div class="example-card">
+      <p class="example-name">Together AI</p>
+      <p class="example-desc">Supports 100B+ parameter models with multi node orchestration</p>
+    </div>
+    
+  </div>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Key Terms</h2>
+  <div class="terms-grid">
+    
+    <div class="term-card">
+      <p class="term-word">LoRA</p>
+      <p class="term-def">Low Rank Adaptation. Fine tunes only a small set of additional parameters instead of the entire model.</p>
+    </div>
+    
+    <div class="term-card">
+      <p class="term-word">QLoRA</p>
+      <p class="term-def">An extension of LoRA that compresses the base model to 4 bit precision, reducing memory by roughly 75%.</p>
+    </div>
+    
+    <div class="term-card">
+      <p class="term-word">Hyperparameter</p>
+      <p class="term-def">A setting that controls the training process itself, such as learning rate and rank.</p>
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Related Patterns</h2>
+  <ul class="related-list">
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="/aiharness/pattern/evaluation/">Evaluation</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="/aiharness/pattern/embedding-vector/">Embedding and Vector</a></li>
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="/aiharness/pattern/rag-knowledge/">RAG and Knowledge</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<nav class="post-nav">
+  
+    <a href="/aiharness/pattern/embedding-vector/"><i class="fa-solid fa-arrow-left"></i> Embedding and Vector</a>
+  
+  
+</nav>
+
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span class="footer-copy">AI Harness v1.0 &middot; March 2026</span>
+    </footer>
+
+    <script>
+      (function() {
+        var btn = document.getElementById('theme-toggle');
+        var lightIcon = document.getElementById('theme-icon-light');
+        var darkIcon = document.getElementById('theme-icon-dark');
+
+        function update() {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          lightIcon.style.display = isDark ? 'inline' : 'none';
+          darkIcon.style.display = isDark ? 'none' : 'inline';
+        }
+
+        btn.addEventListener('click', function() {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+          }
+          update();
+        });
+
+        update();
+      })();
+    </script>
+  </body>
+</html>
