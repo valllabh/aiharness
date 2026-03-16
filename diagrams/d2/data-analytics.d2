@@ -1,0 +1,88 @@
+direction: right
+
+user: User {
+  shape: person
+  style.fill: "#e9ecef"
+  style.stroke: "#868e96"
+}
+
+orchestrator: Orchestrator {
+  style.fill: "#d0ebff"
+  style.stroke: "#1971c2"
+  style.bold: true
+}
+
+query-pipeline: Query\nPipeline {
+  style.fill: "#d3f9d8"
+  style.stroke: "#2b8a3e"
+}
+
+visualization-engine: Visualization\nEngine {
+  style.fill: "#d3f9d8"
+  style.stroke: "#2b8a3e"
+}
+
+guardrails: Guardrails {
+  style.fill: "#ffe3e3"
+  style.stroke: "#c92a2a"
+}
+
+access-control: Access\nControl {
+  style.fill: "#ffe3e3"
+  style.stroke: "#c92a2a"
+}
+
+nl-to-sql: NL to SQL\nTranslator {
+  style.fill: "#d3f9d8"
+  style.stroke: "#2b8a3e"
+}
+
+query-validator: Query\nValidator {
+  style.fill: "#d3f9d8"
+  style.stroke: "#2b8a3e"
+}
+
+schema-context: Schema\nContext {
+  style.fill: "#d3f9d8"
+  style.stroke: "#2b8a3e"
+}
+
+business-glossary: Business\nGlossary {
+  style.fill: "#fff9db"
+  style.stroke: "#e8c400"
+}
+
+database: Database {
+  style.fill: "#a5d8ff"
+  style.stroke: "#1971c2"
+  style.bold: true
+}
+
+response: Response {
+  style.fill: "#e9ecef"
+  style.stroke: "#868e96"
+  style.bold: true
+}
+
+# User to Orchestrator
+user -> orchestrator
+
+# Orchestrator to its services
+orchestrator -> query-pipeline
+orchestrator -> visualization-engine
+orchestrator -> guardrails
+orchestrator -> access-control
+
+# Query Pipeline to components
+query-pipeline -> nl-to-sql
+query-pipeline -> query-validator
+query-pipeline -> schema-context
+
+# Schema Context to Business Glossary
+schema-context -> business-glossary
+
+# Query Validator to Database
+query-validator -> database
+
+# Orchestrator to Response
+orchestrator -> response

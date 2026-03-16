@@ -1,0 +1,56 @@
+graph TD
+    subgraph INPUT ["INPUT"]
+        User["User Message"]
+    end
+
+    subgraph SYSTEM ["CONVERSATIONAL HARNESS"]
+        direction TB
+
+        subgraph IDENTITY ["IDENTITY"]
+            Persona["Persona and Identity\nBehavioral constraints, tone, role"]
+        end
+
+        subgraph CONTEXT ["CONTEXT ASSEMBLY"]
+            History["Conversation History\nSummarize older turns,\nretain recent messages"]
+            Memory["Persistent Memory\nUser preferences, facts,\nprior session data"]
+        end
+
+        subgraph ROUTING ["ROUTING"]
+            Router["Multi Model Router\nSelect model by task type,\ncost, latency, capability"]
+        end
+
+        subgraph CORE ["CORE"]
+            Model["AI Model\nGenerate response using\nassembled context"]
+        end
+
+        subgraph EXECUTION ["EXECUTION"]
+            Tools["Tool Integration\nCode execution, web browse,\nfile analysis, API calls"]
+            Projects["Projects and Workspaces\nScoped instructions,\nproject specific context"]
+        end
+    end
+
+    subgraph OUTPUT ["OUTPUT"]
+        Response["Response"]
+    end
+
+    User -->|raw message| Persona
+    Persona -->|enriched prompt| History
+    Persona -->|enriched prompt| Memory
+    History -->|context window| Router
+    Memory -->|context window| Router
+    Router -->|selected model + prompt| Model
+    Model -->|tool calls| Tools
+    Model -->|scope lookup| Projects
+    Tools -->|tool results| Model
+    Projects -->|scoped context| Model
+    Model -->|final response| Response
+    Response -.->|update| History
+    Response -.->|extract facts| Memory
+
+    classDef io fill:#e9ecef,stroke:#868e96,stroke-width:2px,color:#333,font-weight:bold
+    classDef model fill:#a5d8ff,stroke:#1971c2,stroke-width:2px,color:#1e1e1e,font-weight:bold
+    classDef component fill:#fff9db,stroke:#e8c400,stroke-width:1px,color:#1e1e1e
+
+    class User,Response io
+    class Model model
+    class Persona,History,Memory,Router,Tools,Projects component
