@@ -1,0 +1,46 @@
+---
+layout: base.njk
+title: AI Harness - A catalog of everything built around AI
+description: "AI Harness: The model is commodity. The harness is the differentiator. A pattern catalog for builders, PMs, and leaders."
+---
+
+<div class="section-hero">
+  <div class="dictionary-entry">
+    <h1 class="dictionary-word">AI Harness</h1>
+    <div class="dictionary-meta">
+      <span class="dictionary-phonetic">/ey-eye hahr-nis/</span>
+      <span class="dictionary-pos">noun</span>
+    </div>
+    <ol class="dictionary-defs">
+      <li>{{ harness.definition }}</li>
+      <li>The layer that determines whether an AI model becomes a chatbot, a search engine, a code editor, or an autonomous agent.</li>
+    </ol>
+    <p class="dictionary-example">"{{ harness.thesis }}"</p>
+  </div>
+</div>
+
+<nav class="pattern-index">
+  <h2 class="pattern-index-title">Architecture Categories</h2>
+  <ul class="pattern-index-list">
+    {% for cat in harness.categories %}
+    <li><a href="#{{ cat.id }}">{{ cat.name }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+
+<div class="section">
+  <ul class="section-list">
+    {% for cat in harness.categories %}
+    <li class="card" id="{{ cat.id }}">
+      <a href="{{ ('/pattern/' + cat.id + '/') | url }}" class="card-link" aria-label="{{ cat.name }}"></a>
+      <div class="card-content">
+        <div class="card-header">
+          <h2 class="card-title">{{ cat.name }}</h2>
+          <span class="card-depth">{{ cat.depth }}</span>
+        </div>
+        <p class="card-excerpt">{{ cat.tagline }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
