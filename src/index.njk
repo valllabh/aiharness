@@ -1,0 +1,49 @@
+---
+layout: base.njk
+title: AI Harness - A catalog of everything built around AI
+description: "AI Harness: The model is commodity. The harness is the differentiator. A pattern catalog for builders, PMs, and leaders."
+---
+
+<div class="section-hero">
+  <div class="dictionary-entry">
+    <h1 class="dictionary-word">AI Harness</h1>
+    <div class="dictionary-meta">
+      <span class="dictionary-phonetic">/ey-eye hahr-nis/</span>
+      <span class="dictionary-pos">noun</span>
+    </div>
+    <ol class="dictionary-defs">
+      <li>{{ harness.definition }}</li>
+      <li>The layer that determines whether an AI model becomes a chatbot, a search engine, a code editor, or an autonomous agent.</li>
+    </ol>
+    <p class="dictionary-example">"{{ harness.thesis }}"</p>
+  </div>
+</div>
+
+{% set groups = [
+  { "name": "Foundation", "description": "Infrastructure, constraints, and building blocks", "ids": ["safety-guardrail", "evaluation", "embedding-vector", "fine-tuning"] },
+  { "name": "Experience", "description": "User facing interaction patterns", "ids": ["conversational", "content-generation", "data-analytics", "voice-multimodal", "image-video"] },
+  { "name": "Intelligence", "description": "Deep capability augmentation and autonomy", "ids": ["search-answer", "code-developer", "rag-knowledge", "agent-automation"] }
+] %}
+
+{% for group in groups %}
+<div class="section">
+  <div class="section-title">{{ group.name }}</div>
+  <p class="group-description">{{ group.description }}</p>
+  <ul class="section-list">
+    {% for cat in harness.categories %}
+      {% if cat.id in group.ids %}
+      <li class="card">
+        <a href="{{ ('/pattern/' + cat.id + '/') | url }}" class="card-link" aria-label="{{ cat.name }}"></a>
+        <div class="card-content">
+          <div class="card-header">
+            <h2 class="card-title">{{ cat.name }}</h2>
+            <span class="card-depth">{{ cat.depth }}</span>
+          </div>
+          <p class="card-excerpt">{{ cat.tagline }}</p>
+        </div>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}

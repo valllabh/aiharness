@@ -1,0 +1,106 @@
+---
+pagination:
+  data: harness.categories
+  size: 1
+  alias: pattern
+permalink: "pattern/{{ pattern.id }}/"
+eleventyComputed:
+  title: "{{ pattern.name }} - AI Harness"
+  description: "{{ pattern.tagline }}"
+layout: base.njk
+---
+
+<a href="{{ '/' | url }}" class="back-link"><i class="fa-solid fa-arrow-left"></i> All Patterns</a>
+
+<div class="post-header">
+  <div class="post-meta">
+    <span class="post-meta-item">Depth: <strong>{{ pattern.depth }}</strong></span>
+    <span class="post-meta-item">Model role: <strong>{{ pattern.modelRole }}</strong></span>
+  </div>
+  <h1 class="post-title">{{ pattern.name }}</h1>
+  <p class="post-tagline">{{ pattern.tagline }}</p>
+</div>
+
+{% if pattern.analogy %}
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Real World Analogy</h2>
+  <div class="analogy-card">{{ pattern.analogy }}</div>
+</div>
+{% endif %}
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">How It Works</h2>
+  <div class="pattern-section-body">
+    {% for para in pattern.explanation.split('\n\n') %}
+      <p>{{ para }}</p>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Components</h2>
+  <ul class="components-list">
+    {% for comp in pattern.components %}
+      <li>{{ comp }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Real World Examples</h2>
+  <div class="examples-grid">
+    {% for ex in pattern.examples %}
+    <div class="example-card">
+      <p class="example-name">{{ ex.name }}</p>
+      <p class="example-desc">{{ ex.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Key Terms</h2>
+  <div class="terms-grid">
+    {% for termName, termDef in pattern.terms %}
+    <div class="term-card">
+      <p class="term-word">{{ termName }}</p>
+      <p class="term-def">{{ termDef }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% if pattern.relatedPatterns and pattern.relatedPatterns.length %}
+<div class="pattern-section">
+  <h2 class="pattern-section-title">Related Patterns</h2>
+  <ul class="related-list">
+    {% for relId in pattern.relatedPatterns %}
+      {% for cat in harness.categories %}
+        {% if cat.id == relId %}
+          <li><a href="{{ ('/pattern/' + cat.id + '/') | url }}">{{ cat.name }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{# Prev/Next navigation #}
+{% set allCats = harness.categories %}
+{% set currentIndex = 0 %}
+{% for cat in allCats %}
+  {% if cat.id == pattern.id %}
+    {% set currentIndex = loop.index0 %}
+  {% endif %}
+{% endfor %}
+
+<nav class="post-nav">
+  {% if currentIndex > 0 %}
+    <a href="{{ ('/pattern/' + allCats[currentIndex - 1].id + '/') | url }}"><i class="fa-solid fa-arrow-left"></i> {{ allCats[currentIndex - 1].name }}</a>
+  {% else %}
+    <span></span>
+  {% endif %}
+  {% if currentIndex < allCats.length - 1 %}
+    <a href="{{ ('/pattern/' + allCats[currentIndex + 1].id + '/') | url }}" style="text-align:right;margin-left:auto;">{{ allCats[currentIndex + 1].name }} <i class="fa-solid fa-arrow-right"></i></a>
+  {% endif %}
+</nav>

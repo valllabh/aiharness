@@ -1,0 +1,16 @@
+{
+  "name": "harness-atlas",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npx @11ty/eleventy --serve --port=4322\" \"npx @tailwindcss/cli -i src/styles/main.css -o _site/css/style.css --watch\"",
+    "build": "npx @tailwindcss/cli -i src/styles/main.css -o _site/css/style.css --minify && npx @11ty/eleventy",
+    "preview": "npx serve _site -l 4322"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/cli": "^4.2.1",
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^4.2.1"
+  }
+}

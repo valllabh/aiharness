@@ -1,0 +1,387 @@
+{
+  "version": "1.0",
+  "date": "March 2026",
+  "title": "AI Harness",
+  "tagline": "A catalog of everything built around AI",
+  "thesis": "The model is commodity. The harness is the differentiator.",
+  "definition": "A harness is anything that connects a model's raw capability to useful work.",
+  "categories": [
+    {
+      "id": "conversational",
+      "name": "Conversational",
+      "tagline": "Manages multi turn dialogue, memory, persona, and user interaction",
+      "depth": "Medium",
+      "modelRole": "Conversation engine",
+      "analogy": "Like a skilled concierge at a luxury hotel. The concierge remembers your name, your preferences from past visits, and adapts their tone to each guest. The concierge is not the hotel itself, just the person making the experience feel personal and continuous.",
+      "relatedPatterns": ["safety-guardrail", "rag-knowledge", "agent-automation"],
+      "explanation": "When you chat with an AI assistant like ChatGPT or Claude, the software around the AI manages your entire conversation. It remembers what you said earlier in the chat, keeps track of your preferences across sessions, and maintains a consistent personality. Without this layer, the AI would treat every message as if it came from a stranger with no history.\n\nThe conversation harness handles everything from storing your chat history to deciding which AI model should respond. Some systems keep detailed memories of past interactions so the assistant feels personalized over time. Customer support versions add specialized features like pulling answers from help articles, detecting when to hand off to a human agent, and tracking whether your issue was actually resolved.\n\nThe key challenge is making conversations feel continuous and personal despite the AI having a limited window of text it can process at once. The harness uses techniques like summarizing older messages, storing important facts separately, and strategically injecting relevant memories into each new exchange.",
+      "components": [
+        "Conversation history management and summarization",
+        "Persistent memory across sessions",
+        "Persona and identity layer with behavioral constraints",
+        "Multi model routing for selecting the best AI per task",
+        "Tool integration for code execution, web browsing, and file analysis",
+        "Projects and workspaces with scoped instructions"
+      ],
+      "examples": [
+        {"name": "ChatGPT", "description": "Multi layer memory system that stores user preferences and injects them into every conversation"},
+        {"name": "Claude.ai", "description": "Projects combining custom instructions, knowledge files, and on demand memory retrieval"},
+        {"name": "Intercom Fin", "description": "Customer support AI with multi model pipeline achieving over 50% automated resolution"},
+        {"name": "Sierra.ai", "description": "Enterprise support using a constellation of 15+ models with supervisory agents monitoring quality"}
+      ],
+      "terms": {
+        "Context window": "The maximum amount of text an AI can consider at once. Older messages must be trimmed or summarized to stay within this limit.",
+        "System prompt": "Hidden instructions given to the AI before your conversation starts, defining its personality, rules, and behavior.",
+        "Memory persistence": "The ability for an AI to remember facts about you across separate conversations."
+      }
+    },
+    {
+      "id": "search-answer",
+      "name": "Search and Answer",
+      "tagline": "Retrieves, ranks, and cites web sources in real time to produce grounded answers",
+      "depth": "Deep",
+      "modelRole": "Synthesizer over retrieved sources",
+      "analogy": "Like a research librarian who does not answer from memory. When you ask a question, the librarian walks into the stacks, pulls the most relevant books, cross references them, and writes you a summary with page numbers so you can verify every claim.",
+      "relatedPatterns": ["rag-knowledge", "embedding-vector", "evaluation"],
+      "explanation": "Search and answer harnesses power AI search engines like Perplexity. When you ask a question, the system crawls the web in real time, retrieves relevant pages, ranks them for quality, and feeds the best sources to the AI. The AI then writes a clear answer with citations pointing back to where the information came from.\n\nThe heavy lifting happens before the AI ever sees anything. Perplexity, for example, maintains an index of over 200 billion URLs and uses multiple retrieval methods simultaneously to find the most relevant content. Complex questions get broken into sub questions that are searched in parallel, and the results are cross referenced before being assembled into a final answer.\n\nWhat makes these systems different from a regular chatbot is the emphasis on factual accuracy and freshness. Every claim should trace back to a source. The AI is not relying on what it learned during training but on what it just found on the web.",
+      "components": [
+        "Real time web crawling and indexing at massive scale",
+        "Query decomposition that breaks complex questions into parallel searches",
+        "Hybrid retrieval combining keyword matching with semantic understanding",
+        "Source ranking and deduplication before passing to the AI",
+        "Inline citation generation tied to specific source passages",
+        "Proprietary inference engines optimized for search workloads"
+      ],
+      "examples": [
+        {"name": "Perplexity AI", "description": "AI search engine with 200 billion URL index and 780 million monthly queries"},
+        {"name": "Google AI Overviews", "description": "Synthesized answers at the top of Google Search results powered by Gemini"},
+        {"name": "Microsoft Copilot", "description": "Five stage pipeline combining Bing search index with Azure OpenAI for grounded answers"},
+        {"name": "Exa.ai", "description": "Neural search API that indexes content as semantic embeddings rather than keywords"}
+      ],
+      "terms": {
+        "RAG": "Retrieval Augmented Generation. A technique where AI retrieves relevant documents before generating an answer, grounding its response in actual sources.",
+        "Hybrid search": "Combining traditional keyword matching with AI powered semantic understanding to find results that match both exact terms and overall meaning.",
+        "Grounding": "Connecting AI generated claims to verifiable sources, reducing the chance of AI making things up."
+      }
+    },
+    {
+      "id": "code-developer",
+      "name": "Code and Developer",
+      "tagline": "Provides file context, code structure parsing, and execution environments for software development",
+      "depth": "Deep",
+      "modelRole": "Code generator and reasoning engine",
+      "analogy": "Like giving an architect full blueprints of a building before asking them to design a new wing. Without the blueprints, the architect might suggest a door that opens into a wall. With them, every suggestion fits the existing structure.",
+      "relatedPatterns": ["agent-automation", "evaluation", "safety-guardrail"],
+      "explanation": "Code and developer harnesses turn AI into a programming partner. They wrap the AI with deep understanding of your codebase by parsing the structure of your code, indexing your entire project for quick lookup, and connecting to your development tools. This means the AI can suggest changes that actually work with your existing code rather than generating isolated snippets.\n\nThese systems go far beyond simple autocomplete. They can read your entire project, understand how files relate to each other, run your code to see if it works, read error messages, and fix problems automatically. Code review tools use multiple specialized AI agents working in parallel to check for bugs, security issues, and style violations.\n\nSecurity is a major design concern because these tools have access to your code and can execute commands on your computer. Modern code harnesses use sandboxing to prevent the AI from accessing sensitive files or making unauthorized network connections.",
+      "components": [
+        "AST parsing for understanding code structure at the syntax level",
+        "Codebase indexing with semantic search across all project files",
+        "Language Server Protocol integration for type information and navigation",
+        "Diff generation and multi file edit coordination",
+        "Execution environments with terminal access and build system integration",
+        "Security sandboxing for safe code execution"
+      ],
+      "examples": [
+        {"name": "GitHub Copilot", "description": "Code assistant using AST parsing, dynamic snippet queues, and context from open files"},
+        {"name": "Cursor", "description": "AI code editor with Merkle tree indexing, vector search, and Git history awareness"},
+        {"name": "Claude Code", "description": "Terminal based coding agent with native LSP support and six layer memory"},
+        {"name": "CodeRabbit", "description": "Multi agent code review system running specialized agents in parallel"}
+      ],
+      "terms": {
+        "AST": "Abstract Syntax Tree. A structured representation of code that maps out every function, class, and variable, letting AI understand code structure.",
+        "LSP": "Language Server Protocol. Gives AI access to the same code intelligence your editor uses, including type information and error detection.",
+        "Sandbox": "An isolated environment where AI generated code can run safely without risking damage to your system."
+      }
+    },
+    {
+      "id": "rag-knowledge",
+      "name": "RAG and Knowledge",
+      "tagline": "Chunks, embeds, retrieves, and reranks documents to answer questions from specific knowledge",
+      "depth": "Deep",
+      "modelRole": "Reader and generator over retrieved context",
+      "analogy": "Like a lawyer preparing for court. Before arguing the case, the lawyer reviews thousands of documents, pulls the most relevant passages, organizes them by topic, and only then presents the argument. The quality of the prep work determines the quality of the argument.",
+      "relatedPatterns": ["embedding-vector", "search-answer", "conversational"],
+      "explanation": "RAG harnesses let you give an AI access to your own documents so it can answer questions based on your specific information. The system breaks your documents into small pieces, converts them into numerical representations that capture their meaning, stores them in a searchable database, and retrieves the most relevant pieces when you ask a question.\n\nThe engineering challenge is almost entirely in the data pipeline. Getting the right information to the AI at the right time requires sophisticated document parsing that handles PDFs, spreadsheets, web pages, and dozens of other formats. Chunking strategies determine how documents are split, and the quality of this splitting directly affects answer quality.\n\nMore advanced systems build knowledge graphs that map relationships between concepts, enabling the AI to connect information across multiple documents. This multi hop reasoning produces richer answers than simple document retrieval alone.",
+      "components": [
+        "Document ingestion supporting dozens of file types and data sources",
+        "Chunking strategies from simple fixed size to semantic and layout aware",
+        "Embedding generation and vector storage for similarity search",
+        "Hybrid search combining keyword matching with semantic retrieval",
+        "Reranking to refine and prioritize retrieved results",
+        "Permission aware retrieval respecting enterprise access controls"
+      ],
+      "examples": [
+        {"name": "LlamaIndex", "description": "Framework with 150+ data connectors and multiple indexing strategies"},
+        {"name": "Glean", "description": "Enterprise search connecting 100+ business apps with an organizational knowledge graph"},
+        {"name": "Microsoft GraphRAG", "description": "Builds knowledge graphs from documents using AI to extract entities and relationships"},
+        {"name": "Vectara", "description": "Fully managed RAG service with built in hallucination detection across 100+ languages"}
+      ],
+      "terms": {
+        "Chunking": "Breaking documents into smaller pieces that fit within the AI's processing limits. How you chunk determines what AI can find.",
+        "Vector embedding": "A list of numbers that represents the meaning of text. Similar texts produce similar patterns, enabling search by meaning.",
+        "Knowledge graph": "A structured map of entities and relationships, enabling AI to reason across multiple documents."
+      }
+    },
+    {
+      "id": "agent-automation",
+      "name": "Agent and Automation",
+      "tagline": "Adds tools, planning, state management, and multi step loops for autonomous task execution",
+      "depth": "Very Deep",
+      "modelRole": "Autonomous reasoning and acting engine",
+      "analogy": "Like hiring a general contractor instead of asking for renovation advice. The contractor does not just tell you what to do. They make a plan, hire subcontractors, buy materials, check results, adjust when things go wrong, and keep going until the job is done.",
+      "relatedPatterns": ["code-developer", "safety-guardrail", "conversational"],
+      "explanation": "Agent harnesses give AI the ability to take actions in the real world, not just generate text. The AI can use tools, make plans, execute multi step workflows, and adjust its approach based on results. Think of it as the difference between asking someone for directions versus hiring someone to drive you there.\n\nThe wrapping around the AI is the deepest of any harness type. It includes planning engines that break big tasks into steps, tool calling systems that let the AI interact with software and websites, state management that tracks progress across long running tasks, and safety guardrails that prevent the AI from taking harmful actions.\n\nThe same AI model can perform dramatically differently depending on its harness. In benchmarks, one model scored 78% with one harness and only 42% with another, a 36 point gap from the wrapping alone.",
+      "components": [
+        "Tool calling with structured schemas for interacting with external systems",
+        "Planning loops that break tasks into steps and adapt based on results",
+        "State persistence and checkpointing for long running tasks",
+        "Multi agent coordination with handoffs between specialized agents",
+        "Human in the loop approval workflows for sensitive actions",
+        "Observability and tracing for monitoring agent behavior"
+      ],
+      "examples": [
+        {"name": "Claude Agent SDK", "description": "Gives AI a body with computer, terminal, and filesystem access"},
+        {"name": "LangGraph", "description": "Graph based state machine for building agents with conditional branching, 47M+ downloads"},
+        {"name": "Zapier Agents", "description": "AI agents with access to 7,000+ app integrations that make decisions"},
+        {"name": "Anthropic Computer Use", "description": "AI that controls a desktop computer through screenshots, clicks, and typing"}
+      ],
+      "terms": {
+        "Tool calling": "The ability for AI to invoke external functions like searching the web, running code, or sending messages.",
+        "Agent loop": "The cycle where AI thinks, acts, observes results, and decides the next step, repeating until done.",
+        "Human in the loop": "A design pattern where AI pauses at critical decision points and asks a human for approval."
+      }
+    },
+    {
+      "id": "safety-guardrail",
+      "name": "Safety and Guardrail",
+      "tagline": "Intercepts and filters AI inputs and outputs to enforce safety policies",
+      "depth": "Thin",
+      "modelRole": "Pass through with policy enforcement",
+      "analogy": "Like airport security screening. Every passenger (request) goes through the same checkpoint regardless of destination. The screening does not change the passenger, it just decides who gets through and who gets stopped. Multiple layers exist because no single check catches everything.",
+      "relatedPatterns": ["agent-automation", "conversational", "content-generation"],
+      "explanation": "Safety harnesses sit between users and the AI like a security checkpoint. They inspect what goes into the AI and what comes out, blocking harmful requests, filtering dangerous outputs, and enforcing organizational policies. Unlike other harness types that add capabilities, safety harnesses add constraints.\n\nThese systems use a combination of fast rule based checks for known attack types and AI powered classifiers that understand nuance. Input filters detect prompt injection attacks where someone tries to trick the AI into ignoring its instructions. Output filters catch harmful content, leaked personal information, or responses that violate company policies.\n\nProduction systems layer multiple defense approaches because no single technique is foolproof. Organizations typically combine rule based filtering for speed on known patterns with AI based evaluation for handling novel situations.",
+      "components": [
+        "Input interceptors for prompt injection and jailbreak detection",
+        "Output filters for harmful content, bias, and policy violations",
+        "PII redaction that removes personal information before and after processing",
+        "Policy definition languages for declaring safety rules as code",
+        "Capability gating that restricts which tools agents can access",
+        "Canary tokens for detecting data leakage"
+      ],
+      "examples": [
+        {"name": "NVIDIA NeMo Guardrails", "description": "Programmable safety rails using a custom language called Colang"},
+        {"name": "Lakera Guard", "description": "Managed API combining machine learning and rule based filters for attack detection"},
+        {"name": "Guardrails AI", "description": "Output validation framework with pre built validators for hallucination detection"},
+        {"name": "Llama Guard", "description": "Meta's specialized classification model for detecting unsafe content"}
+      ],
+      "terms": {
+        "Prompt injection": "An attack where malicious instructions are hidden in user input, attempting to override AI's intended behavior.",
+        "PII redaction": "Automatically detecting and removing personally identifiable information from AI inputs or outputs.",
+        "Guardrail": "A protective boundary that constrains AI behavior without modifying the model itself."
+      }
+    },
+    {
+      "id": "evaluation",
+      "name": "Evaluation",
+      "tagline": "Feeds benchmarks, measures outputs, and scores AI performance systematically",
+      "depth": "Thinnest",
+      "modelRole": "Black box under test",
+      "analogy": "Like a food inspector visiting a restaurant. The inspector does not cook anything. They order dishes, taste them, score them against standards, and publish a rating. The restaurant (model) is unchanged by the inspection, but the results determine whether it stays open.",
+      "relatedPatterns": ["fine-tuning", "safety-guardrail", "code-developer"],
+      "explanation": "Evaluation harnesses are the measurement tools of the AI world. They feed standardized test questions to AI models, score the answers, and report how well the model performs. The AI is treated as a black box: the harness sends in questions and measures what comes out without modifying anything. This is the thinnest wrapping of any harness type.\n\nThese systems range from academic benchmark suites that test general knowledge and reasoning to production monitoring tools that continuously check AI quality on real user traffic. Scoring can be as simple as checking if the answer matches exactly, or as sophisticated as using another AI to judge the quality of open ended responses.\n\nEvaluation harnesses increasingly integrate with software development pipelines. Just as code changes must pass tests before deployment, AI system changes must pass evaluation benchmarks. This prevents deploying updates that accidentally make the AI worse.",
+      "components": [
+        "Standardized benchmark datasets with expected answers",
+        "Scoring functions from exact match to AI as judge evaluation",
+        "Comparison frameworks for testing model A versus model B",
+        "Red teaming and adversarial security scanning",
+        "CI/CD integration to block deployments that fail quality checks",
+        "Production monitoring for detecting quality drift on live traffic"
+      ],
+      "examples": [
+        {"name": "EleutherAI lm-evaluation-harness", "description": "Most widely used benchmark suite with 60+ tests, powers the Open LLM Leaderboard"},
+        {"name": "Stanford HELM", "description": "Holistic evaluation scoring safety, fairness, accuracy, and robustness in a single run"},
+        {"name": "Promptfoo", "description": "Open source CLI with built in red teaming and security scanning alongside evaluation"},
+        {"name": "Braintrust", "description": "SaaS platform combining evaluation scoring with production tracing and CI enforcement"}
+      ],
+      "terms": {
+        "Benchmark": "A standardized set of test questions used to measure and compare AI model performance.",
+        "LLM as judge": "Using one AI model to evaluate the quality of another AI model's responses.",
+        "Red teaming": "Deliberately trying to make an AI system fail through adversarial testing to discover vulnerabilities."
+      }
+    },
+    {
+      "id": "content-generation",
+      "name": "Content Generation",
+      "tagline": "Adds brand voice, templates, SEO optimization, and publishing workflows for content production",
+      "depth": "Medium",
+      "modelRole": "Writing engine inside content pipeline",
+      "analogy": "Like a ghostwriter who studies an author's previous books before writing the next one. The ghostwriter (AI) has general writing ability, but the publisher (harness) provides the style guide, the outline, the brand voice, and the approval process that turns raw writing into publishable content.",
+      "relatedPatterns": ["conversational", "rag-knowledge", "safety-guardrail"],
+      "explanation": "Content generation harnesses turn general purpose AI into specialized writing tools for marketing teams and businesses. Users interact with templates, brand settings, and workflow tools rather than directly prompting an AI model. The system ensures that everything produced sounds like it came from the brand and fits the right format for each channel.\n\nThe brand voice engine is the core differentiator. Organizations upload their style guides, tone descriptions, and example content, and the harness enforces these standards across all generated output. A formal financial services firm and a casual consumer brand can use the same underlying AI model yet produce completely different sounding content.\n\nContent harnesses also manage the workflow from initial brief through drafting, team review, approval, and publishing. Some platforms generate coordinated content across multiple channels from a single campaign brief.",
+      "components": [
+        "Brand voice training from style guides and example content",
+        "Content type templates for blogs, ads, emails, social posts, and presentations",
+        "SEO optimization with keyword integration and readability scoring",
+        "Team collaboration with review and approval workflows",
+        "Distribution integrations for publishing to CMS, social, and email platforms",
+        "Terminology management and compliance checking"
+      ],
+      "examples": [
+        {"name": "Jasper AI", "description": "Enterprise marketing platform with brand voice training and campaign workflows"},
+        {"name": "Writer", "description": "Enterprise content platform focused on style guide enforcement and compliance"},
+        {"name": "Gamma", "description": "AI presentation and document builder with 70M+ users"},
+        {"name": "Notion AI", "description": "Writing assistant integrated into Notion with automatic context from surrounding pages"}
+      ],
+      "terms": {
+        "Brand voice": "The consistent personality and style that makes content sound like it came from a specific organization.",
+        "Content template": "A predefined structure specifying format, length, and tone for a particular type of content.",
+        "SEO optimization": "Techniques for making content more visible in search engine results."
+      }
+    },
+    {
+      "id": "data-analytics",
+      "name": "Data and Analytics",
+      "tagline": "Provides schema awareness and query generation for natural language interaction with data",
+      "depth": "Medium",
+      "modelRole": "Natural language to structured query translator",
+      "analogy": "Like a translator at a foreign embassy. You speak your language (plain English), the translator converts it into the precise legal language the system requires (SQL), and brings back the official response in a form you can understand (charts and summaries).",
+      "relatedPatterns": ["rag-knowledge", "embedding-vector", "safety-guardrail"],
+      "explanation": "Data and analytics harnesses let people ask questions about their data in plain English instead of writing database queries. You might ask \"What were our top selling products last quarter?\" and the system translates that into a precise database query, runs it, and presents the results as a chart or table with a written explanation.\n\nThe critical component is schema awareness. The harness teaches the AI about your database structure: what tables exist, what columns they contain, and how tables connect to each other. Without this context, the AI would guess at names and produce queries that fail. With proper schema context, systems achieve 95% accuracy in translation.\n\nGovernance is essential because natural language interfaces make data access easier, which means access controls become more important. The harness must ensure that generated queries respect the same permissions as direct database access.",
+      "components": [
+        "Database schema context with table descriptions and relationships",
+        "Natural language to SQL translation pipeline",
+        "Query validation and execution sandboxing",
+        "Data visualization with automatic chart type selection",
+        "Role based access control inheriting database permissions",
+        "Business glossary mapping domain terms to technical schema"
+      ],
+      "examples": [
+        {"name": "Snowflake Cortex", "description": "Achieves 95% natural language to SQL accuracy inside the Snowflake data platform"},
+        {"name": "Databricks AI", "description": "End to end ML platform with Unity Catalog governance and natural language queries"},
+        {"name": "Julius AI", "description": "Accessible analytics for business users with automatic charting and reports"},
+        {"name": "Vanna AI", "description": "Open source framework that trains on your schema to improve accuracy over time"}
+      ],
+      "terms": {
+        "Schema awareness": "Giving AI detailed knowledge of your database structure so it can generate correct queries.",
+        "Natural language to SQL": "Translating a plain English question into a precise database query that returns the right data.",
+        "Query validation": "Checking that an AI generated query is safe and correct before running it."
+      }
+    },
+    {
+      "id": "voice-multimodal",
+      "name": "Voice and Multimodal",
+      "tagline": "Converts between audio, video, and text to enable voice and multimodal interaction",
+      "depth": "Medium",
+      "modelRole": "Reasoning engine between modality boundaries",
+      "analogy": "Like a simultaneous interpreter at the United Nations. The interpreter listens in one language, processes the meaning, and speaks in another language in near real time. The challenge is not understanding or speaking, it is doing both fast enough that the conversation feels natural.",
+      "relatedPatterns": ["conversational", "agent-automation", "image-video"],
+      "explanation": "Voice and multimodal harnesses let you talk to AI naturally using your voice and get spoken responses back. The system converts your speech to text, sends it to the AI for processing, and converts the response back into speech. More advanced systems skip the text step entirely, processing audio directly for faster conversations.\n\nLatency is the defining constraint. In a voice conversation, anything over about 800 milliseconds starts to feel awkward. Every component must be optimized for speed. The best systems begin speaking before the full response is generated, streaming audio as soon as the first words are ready.\n\nEmotion detection represents the frontier. Systems like Hume AI analyze not just what you say but how you say it, detecting frustration, confusion, or happiness from your tone. The AI then adjusts its response accordingly, creating interactions that feel fundamentally different from emotionally flat voice assistants.",
+      "components": [
+        "Speech to text pipelines with noise reduction and language detection",
+        "Text to speech engines with voice cloning and natural prosody",
+        "Real time streaming infrastructure for sub second response times",
+        "Turn taking management for natural conversation flow",
+        "Emotion detection from voice tone, pace, and volume",
+        "Multimodal fusion combining audio, video, and text inputs"
+      ],
+      "examples": [
+        {"name": "ElevenLabs", "description": "Leading voice AI with low latency conversational AI, voice cloning, and 29+ languages"},
+        {"name": "Hume AI", "description": "Emotional intelligence platform with affect aware voice that adjusts tone based on user emotions"},
+        {"name": "OpenAI Realtime API", "description": "Native voice mode with sub second latency combining recognition, reasoning, and generation"},
+        {"name": "Whisper + GPT 4o", "description": "Classic modular approach using separate best in class models for each stage"}
+      ],
+      "terms": {
+        "ASR": "Automatic Speech Recognition. Technology that converts spoken words into text.",
+        "TTS": "Text to Speech. Technology that converts written text into natural sounding spoken audio.",
+        "Affect aware interaction": "AI that detects and responds to user emotions, adjusting both what it says and how it says it."
+      }
+    },
+    {
+      "id": "image-video",
+      "name": "Image and Video Generation",
+      "tagline": "Manages prompts, style controls, consistency, and post processing for visual content",
+      "depth": "Medium",
+      "modelRole": "Visual generation engine",
+      "analogy": "Like a film production studio. The director (user) says what they want to see. The producer (harness) translates that vision into specific instructions for the camera crew, lighting, costumes, and post production editing (the model and its pipeline). A great director with a bad production team gets a bad film.",
+      "relatedPatterns": ["voice-multimodal", "content-generation", "safety-guardrail"],
+      "explanation": "Image and video generation harnesses manage the complex process of turning text descriptions into visual content. When you type a description, the harness interprets your intent, expands your prompt with technical details that improve quality, applies style preferences, and manages the generation process.\n\nUnlike text generation where the output is immediately usable, visual content often requires multiple processing stages. The initial generation might be at a lower resolution that gets upscaled. Specific regions might need correction. Colors might need adjustment to match brand requirements. The harness manages this entire pipeline.\n\nThe hardest unsolved problem is consistency. Generating a single impressive image is straightforward, but maintaining the same character appearance across multiple images or video frames remains challenging.",
+      "components": [
+        "Prompt interpretation and enhancement for optimal generation",
+        "Style and aesthetic controls including presets and reference images",
+        "Character and scene consistency engines for coherent output",
+        "Timeline and keyframe controls for video generation",
+        "Resolution management with upscaling and post processing",
+        "Content safety filters for blocking inappropriate visual output"
+      ],
+      "examples": [
+        {"name": "Midjourney", "description": "Artistic aesthetic leader with character consistency and video up to 21 seconds"},
+        {"name": "DALL E 3", "description": "Precise prompt following integrated with ChatGPT for optimal prompt rewriting"},
+        {"name": "Runway Gen 4", "description": "Professional video generation with character, scene, and cinematic consistency"},
+        {"name": "Stable Diffusion", "description": "Open source platform with community built node based workflows"}
+      ],
+      "terms": {
+        "Character consistency": "Generating the same character looking the same across multiple images or video frames.",
+        "Inpainting": "Selectively regenerating specific parts of an image while keeping the rest unchanged.",
+        "Prompt engineering": "Crafting text descriptions to produce better visual output, often automated by the harness."
+      }
+    },
+    {
+      "id": "embedding-vector",
+      "name": "Embedding and Vector",
+      "tagline": "Manages tokenization, indexing, and similarity search for vector representations",
+      "depth": "Thin",
+      "modelRole": "Representation generator",
+      "analogy": "Like a library's cataloging system. The librarian (embedding model) reads every book and assigns it a shelf location based on its content. When you describe what you are looking for, the system finds the nearest shelf. You never interact with the cataloger directly, but nothing is findable without their work.",
+      "relatedPatterns": ["rag-knowledge", "search-answer", "data-analytics"],
+      "explanation": "Embedding harnesses are the invisible infrastructure behind AI search and retrieval. They convert text, code, or images into lists of numbers (vectors) that capture meaning. Similar content produces similar number patterns, so finding relevant information becomes a math problem. No text is generated and no conversations happen. This is pure data infrastructure.\n\nThe pipeline takes raw content, cleans it, breaks it into pieces, runs it through an AI model to produce vectors, and stores those vectors in a specialized database. When someone later searches for something, their query gets converted to a vector and the database finds the closest matches.\n\nModel selection has enormous cost implications. Different embedding models produce vectors of different sizes, and at scale with millions or billions of vectors, this translates to significant differences in storage costs.",
+      "components": [
+        "Tokenization and preprocessing pipelines for cleaning input",
+        "Chunking strategies for splitting documents to fit model limits",
+        "Embedding generation using specialized AI models",
+        "Dimensionality configuration and compression for cost management",
+        "Batch processing infrastructure for high volume indexing",
+        "Similarity search indexes for fast vector comparison at scale"
+      ],
+      "examples": [
+        {"name": "Sentence Transformers", "description": "Open source framework for running embedding models locally with zero ongoing cost"},
+        {"name": "Cohere Embed v3", "description": "Multilingual embeddings in 100+ languages with compression aware training"},
+        {"name": "Pinecone", "description": "Managed vector database providing high performance similarity search at scale"},
+        {"name": "Voyage AI", "description": "Retrieval optimized embeddings that outperform competitors on search benchmarks"}
+      ],
+      "terms": {
+        "Vector embedding": "A list of numbers representing the meaning of content. Similar content produces similar patterns.",
+        "Similarity search": "Finding content closest in meaning to a query by comparing vector representations.",
+        "Quantization": "Reducing precision of vector numbers to save storage, trading accuracy for cost savings."
+      }
+    },
+    {
+      "id": "fine-tuning",
+      "name": "Fine Tuning",
+      "tagline": "Orchestrates training loops and data to modify the AI model itself",
+      "depth": "Build time",
+      "modelRole": "Model being modified",
+      "analogy": "Like a sports training camp. The athlete (model) arrives with general ability. The coaching staff (harness) designs drills from game film (training data), adjusts intensity (hyperparameters), tracks progress (evaluation), and produces a specialist. The athlete leaves fundamentally changed, not just better equipped.",
+      "relatedPatterns": ["evaluation", "embedding-vector", "rag-knowledge"],
+      "explanation": "Fine tuning harnesses are unique because they are the only category that changes the AI model itself. Every other harness wraps the model at runtime without altering it. Fine tuning takes a pretrained AI model and further trains it on specialized data, producing a new version that is better at specific tasks.\n\nThe harness manages the entire training process: formatting data, configuring parameters, optimizing memory usage, coordinating across multiple GPUs, saving progress, and evaluating quality throughout. Modern techniques like LoRA make this dramatically more accessible by only training a tiny fraction of the model's parameters.\n\nMemory optimization is the key innovation that democratized fine tuning. A 70 billion parameter model normally requires over 140 GB of GPU memory. QLoRA reduces this to about 48 GB, fitting on a single high end GPU. Tools like Unsloth push further with 2 to 5x speed improvements.",
+      "components": [
+        "Training data formatting and quality validation",
+        "Training loop orchestration with LoRA, QLoRA, and full fine tuning",
+        "Memory optimization for fitting large models on available hardware",
+        "Hyperparameter management for learning rate, rank, and scheduling",
+        "Multi GPU and multi node coordination for large scale training",
+        "Checkpointing, evaluation, and model export for deployment"
+      ],
+      "examples": [
+        {"name": "Axolotl", "description": "Leading open source framework with YAML driven configuration and rapid model support"},
+        {"name": "Unsloth", "description": "Achieves 2 to 5x faster training with 80% less memory on consumer GPUs"},
+        {"name": "OpenAI Fine Tuning API", "description": "Managed service with reinforcement fine tuning and no GPU infrastructure to manage"},
+        {"name": "Together AI", "description": "Supports 100B+ parameter models with multi node orchestration"}
+      ],
+      "terms": {
+        "LoRA": "Low Rank Adaptation. Fine tunes only a small set of additional parameters instead of the entire model.",
+        "QLoRA": "An extension of LoRA that compresses the base model to 4 bit precision, reducing memory by roughly 75%.",
+        "Hyperparameter": "A setting that controls the training process itself, such as learning rate and rank."
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.w3.org/2000/svg">
+  <url>
+    <loc>https://vallabh.me/aiharness/</loc>
+  </url>
+  {% for cat in harness.categories %}
+  <url>
+    <loc>https://vallabh.me/aiharness/pattern/{{ cat.id }}/</loc>
+  </url>
+  {% endfor %}
+</urlset>
