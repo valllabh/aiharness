@@ -19,17 +19,34 @@ description: "AI Harness: The model is commodity. The harness is the differentia
   </div>
 </div>
 
-<nav class="pattern-index">
-  <h2 class="pattern-index-title">Architecture Categories</h2>
-  <p class="pattern-index-subtitle">13 categories of architecture patterns that shape how AI products are built. Each describes a distinct way of wrapping a model to create useful software.</p>
-  <ul class="pattern-index-list">
-    {% for cat in harness.categories %}
-    <li><a href="#{{ cat.id }}">{{ cat.name }}</a></li>
+<div class="section">
+  <div class="pattern-index">
+    <h2 class="pattern-index-title">Core Capabilities</h2>
+    <p class="pattern-index-subtitle">Every AI harness is built from four fundamental capabilities. The model is the same. The harness makes the difference.</p>
+  </div>
+  <div class="diagram-container-wide">
+    <img src="{{ '/assets/diagrams/harness-overview.png' | url }}" alt="AI Harness Overview Diagram" class="diagram-img">
+  </div>
+  <ul class="section-list">
+    {% for cap in harness.capabilities %}
+    <li class="capability-card" style="--capability-color: {{ cap.color }}">
+      <div class="card-content">
+        <div class="card-header">
+          <h2 class="card-title">{{ cap.name }}</h2>
+        </div>
+        <p class="card-excerpt">{{ cap.tagline }}</p>
+        <p class="capability-example"><em>{{ cap.example }}</em></p>
+      </div>
+    </li>
     {% endfor %}
   </ul>
-</nav>
+</div>
 
 <div class="section">
+  <div class="pattern-index">
+    <h2 class="pattern-index-title">Pattern Library</h2>
+    <p class="pattern-index-subtitle">Detailed architecture patterns showing how capabilities combine in real products.</p>
+  </div>
   <ul class="section-list">
     {% for cat in harness.categories %}
     <li class="card" id="{{ cat.id }}">

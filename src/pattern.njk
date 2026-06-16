@@ -13,10 +13,6 @@ layout: base.njk
 <a href="{{ '/' | url }}" class="back-link"><i class="fa-solid fa-arrow-left"></i> All Patterns</a>
 
 <div class="post-header">
-  <div class="post-meta">
-    <span class="post-meta-item">Depth: <strong>{{ pattern.depth }}</strong></span>
-    <span class="post-meta-item">Model role: <strong>{{ pattern.modelRole }}</strong></span>
-  </div>
   <h1 class="post-title">{{ pattern.name }}</h1>
   <p class="post-tagline">{{ pattern.tagline }}</p>
 </div>
@@ -35,23 +31,10 @@ layout: base.njk
       <p>{{ para }}</p>
     {% endfor %}
   </div>
-</div>
-
-<div class="pattern-section">
-  <h2 class="pattern-section-title">Architecture</h2>
   <div class="diagram-container">
     <img src="{{ ('/assets/diagrams/' + pattern.id + '.png') | url }}" alt="{{ pattern.name }} architecture diagram" class="diagram-img" loading="lazy" />
     <img src="{{ '/assets/diagrams/legend.png' | url }}" alt="Legend" class="diagram-legend" loading="lazy" />
   </div>
-</div>
-
-<div class="pattern-section">
-  <h2 class="pattern-section-title">Components</h2>
-  <ul class="components-list">
-    {% for comp in pattern.components %}
-      <li>{{ comp }}</li>
-    {% endfor %}
-  </ul>
 </div>
 
 <div class="pattern-section">

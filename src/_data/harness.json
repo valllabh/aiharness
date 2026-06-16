@@ -383,5 +383,63 @@
         "Hyperparameter": "A setting that controls the training process itself, such as learning rate and rank."
       }
     }
+  ],
+  "capabilities": [
+    {
+      "id": "interface",
+      "name": "Interface",
+      "tagline": "How the system receives asks and delivers results",
+      "color": "#e9ecef",
+      "example": "Like a translator at a conference. The delegate speaks French, the audience hears English. The translator handles conversion on both sides. The delegate never changes how they talk.",
+      "components": [
+        {"id": "input-processing", "name": "Input Processing", "description": "Parsing and normalizing what enters the system"},
+        {"id": "output-delivery", "name": "Output Delivery", "description": "Formatting and delivering what leaves the system"},
+        {"id": "modality", "name": "Modality Conversion", "description": "Converting between voice, text, image, and video"},
+        {"id": "streaming", "name": "Streaming", "description": "Real time token by token delivery"},
+        {"id": "session", "name": "Session Management", "description": "Tracking who is asking and maintaining conversation state"}
+      ]
+    },
+    {
+      "id": "knowledge",
+      "name": "Knowledge",
+      "tagline": "How the system gathers the right context for the model",
+      "color": "#fff9db",
+      "example": "Like a research assistant who reads through a stack of reports before you even ask your question. When you do ask, they answer with specifics you never gave them because they already found the right sources.",
+      "components": [
+        {"id": "context-assembly", "name": "Context Assembly", "description": "Building the prompt from system instructions, history, and retrieved data"},
+        {"id": "retrieval", "name": "Retrieval (RAG)", "description": "Finding and ranking relevant documents from external sources"},
+        {"id": "embeddings", "name": "Embeddings and Vector Search", "description": "Converting text to numerical representations for similarity matching"},
+        {"id": "memory", "name": "Memory and Persistence", "description": "Storing and recalling facts across sessions"},
+        {"id": "document-processing", "name": "Document Processing", "description": "Ingesting, chunking, and indexing source material"}
+      ]
+    },
+    {
+      "id": "agency",
+      "name": "Agency",
+      "tagline": "How the system enables the model to act",
+      "color": "#d0ebff",
+      "example": "Like a personal assistant who does not just tell you about flights but actually books one, checks your calendar, and sends you the confirmation. They think, act, check the result, and keep going until the job is done.",
+      "components": [
+        {"id": "tool-use", "name": "Tool Use", "description": "Calling external functions, APIs, and services on behalf of the model"},
+        {"id": "planning", "name": "Planning and Orchestration", "description": "Breaking goals into steps and coordinating execution"},
+        {"id": "agent-loops", "name": "Agent Loops", "description": "The observe, think, act cycle that repeats until a goal is met"},
+        {"id": "code-execution", "name": "Code Execution", "description": "Running generated code in sandboxed environments"},
+        {"id": "multi-agent", "name": "Multi Agent Systems", "description": "Coordinating multiple AI agents working together"}
+      ]
+    },
+    {
+      "id": "governance",
+      "name": "Governance",
+      "tagline": "How the system is controlled and constrained",
+      "color": "#ffe3e3",
+      "example": "Like a newspaper editor who reviews every article before it goes to print. They catch errors, flag policy violations, and kill anything that should not be published. The journalist writes, the editor governs.",
+      "components": [
+        {"id": "safety", "name": "Safety and Guardrails", "description": "Filtering inputs and outputs to enforce content and security policies"},
+        {"id": "routing", "name": "Model Routing", "description": "Selecting the right model based on task, cost, and capability"},
+        {"id": "evaluation", "name": "Evaluation and Testing", "description": "Measuring quality, catching regressions, scoring outputs"},
+        {"id": "human-in-loop", "name": "Human in the Loop", "description": "Pausing for human review and approval at critical points"},
+        {"id": "fine-tuning", "name": "Fine Tuning and Adaptation", "description": "Modifying the model itself for domain specific performance"}
+      ]
+    }
   ]
 }
